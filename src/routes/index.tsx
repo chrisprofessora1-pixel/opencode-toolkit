@@ -361,8 +361,8 @@ function groupByCategory<T extends { category: string }>(items: T[], order: stri
 function OpenCodeLibraryPage() {
   const [activeTab, setActiveTab] = useState<Tab>("prompts");
 
-  const promptGroups = groupByCategory(prompts, PROMPT_GROUP_ORDER);
-  const skillGroups = groupByCategory(skills, SKILL_GROUP_ORDER);
+  const promptGroups = groupByCategory([...prompts, ...teacherPrompts], PROMPT_GROUP_ORDER);
+  const skillGroups = groupByCategory([...skills, ...teacherSkills], SKILL_GROUP_ORDER);
 
   return (
     <div className="min-h-screen bg-background pb-24">
