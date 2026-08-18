@@ -40,7 +40,7 @@ const prompts: PromptCard[] = [
   {
     id: "build-brain",
     category: "Setup",
-    number: "01 / 08",
+    number: "01 / 13",
     title: "Build my brain",
     description: "Give OpenCode a folder and a Notion page so your projects, preferences and useful stuff follow you around.",
     body: `You're going to help me set up what I call my brain. It has two pieces: a folder on my computer and a Notion page. We're doing this one step at a time, and you will not move on to the next step until I tell you we're done.
@@ -58,7 +58,7 @@ Explain everything like you're talking to a smart friend who just hasn't done th
   {
     id: "connect-app",
     category: "Integration",
-    number: "02 / 08",
+    number: "02 / 13",
     title: "Connect me to any app",
     description: "Wire OpenCode into the apps you actually use, one step at a time.",
     body: `Connect me to [APP NAME]. Walk me through it one step at a time: tell me what to click, where to go and what to paste, and wait for me to tell you what I see before you give me the next step. When it's done, tell me how to test that it's actually connected.
@@ -73,7 +73,7 @@ Swap [APP NAME] for what you need:
   {
     id: "find-skill",
     category: "Discovery",
-    number: "03 / 08",
+    number: "03 / 13",
     title: "Find me a skill",
     description: "Search GitHub for the skill you need without pretending you know what you're looking at.",
     body: `Find me a GitHub skill for [MAKING INSTAGRAM CAROUSELS / BROWSER CONTROL / STUDENT WORKSHEETS / NOTION PAGES]. Give me the link and tell me what it does in one or two lines, in plain language, before I install anything.`,
@@ -81,7 +81,7 @@ Swap [APP NAME] for what you need:
   {
     id: "make-skill",
     category: "Discovery",
-    number: "04 / 08",
+    number: "04 / 13",
     title: "Make me a custom skill",
     description: "Turn your own instructions into a skill you can load in any chat.",
     body: `I want to turn this into a skill: [DESCRIBE YOUR PROCESS, YOUR RULES AND ONE EXAMPLE]. Package it as a skill I can load in any chat, name it something I'll actually remember, and tell me how to use it.`,
@@ -89,7 +89,7 @@ Swap [APP NAME] for what you need:
   {
     id: "github-login",
     category: "Authentication",
-    number: "05 / 08",
+    number: "05 / 13",
     title: "Log me in to GitHub",
     description: "Set up GitHub so you can bring Lovable projects into OpenCode.",
     body: `Help me set up GitHub. Walk me through creating an account if I don't have one, logging in, and creating a repository. One step at a time, plain language, wait for me at every step.`,
@@ -97,7 +97,7 @@ Swap [APP NAME] for what you need:
   {
     id: "work-project",
     category: "Execution",
-    number: "06 / 08",
+    number: "06 / 13",
     title: "Let's work on this project",
     description: "Open a project from your brain folder and pick up where you left off.",
     body: `Open the project [PROJECT NAME] from my brain folder. Read everything in it first, then tell me what the project is and what it currently does. Wait for my instructions before you change anything.`,
@@ -105,7 +105,7 @@ Swap [APP NAME] for what you need:
   {
     id: "ask-stuck",
     category: "Troubleshooting",
-    number: "07 / 08",
+    number: "07 / 13",
     title: "Ask OpenCode when you're stuck",
     description: "Turn a blocker into a plain-language question and get a useful next move.",
     body: `I'm stuck on [WHAT YOU'RE TRYING TO DO]. Walk me through this one step at a time: tell me exactly what to click and where, and wait for me to tell you what I see before you give me the next step. Assume I know nothing about this and don't make me feel dumb about it.`,
@@ -113,7 +113,7 @@ Swap [APP NAME] for what you need:
   {
     id: "read-screenshot",
     category: "Troubleshooting",
-    number: "08 / 08",
+    number: "08 / 13",
     title: "Read a screenshot",
     description: "Show OpenCode an image that lives on your computer, not in the chat.",
     body: `Read the image called [FILENAME] in my Downloads folder and tell me what it shows.
@@ -121,6 +121,46 @@ Swap [APP NAME] for what you need:
 Or, for the Desktop:
 
 Look at the screenshot on my Desktop called [FILENAME] and tell me what it shows.`,
+  },
+  {
+    id: "lovable-handoff",
+    category: "Integration",
+    number: "09 / 13",
+    title: "Bring my Lovable project in",
+    description: "Bring a Lovable project into OpenCode through GitHub, step by step.",
+    body: `I have a project in Lovable. Walk me through connecting it to GitHub so I can bring it into OpenCode. Go slowly: tell me exactly what to click in Lovable, where the project link is, and what to do with it in OpenCode. Wait for me at every step.`,
+  },
+  {
+    id: "keep-improving",
+    category: "Execution",
+    number: "10 / 13",
+    title: "Keep improving one project",
+    description: "Keep editing the same project instead of rebuilding it every time.",
+    body: `Open my project [PROJECT NAME]. I want to keep working on the same project instead of starting over. Make this change: [DESCRIBE THE CHANGE]. Match the existing style, and tell me what you changed.`,
+  },
+  {
+    id: "review-work",
+    category: "Execution",
+    number: "11 / 13",
+    title: "Review my work",
+    description: "Get an honest read on your work before you change anything.",
+    body: `Read [PROJECT OR FILE] carefully. Tell me what's working, what's broken, and the two changes that would improve it the most. Don't change anything yet. Wait for my approval.`,
+  },
+  {
+    id: "schedule-task",
+    category: "Automation",
+    number: "12 / 13",
+    title: "Schedule a task",
+    description: "Set a task to run later and know where to check on it.",
+    body: `Schedule this task for me: [DESCRIBE THE TASK]. Tell me when it's set for, how to see it, and how to cancel it if I change my mind.`,
+  },
+  {
+    id: "build-game",
+    category: "Creation",
+    number: "13 / 13",
+    title: "Build me a game",
+    description: "Make a little game for a student and keep the same one growing.",
+    body: `Make a vocabulary game for [STUDENT NAME] using these words: [WORD LIST]. Keep it simple and fun, and tell me how to open it.`,
   },
 ];
 
