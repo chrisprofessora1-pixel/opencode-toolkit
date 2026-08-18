@@ -262,7 +262,7 @@ const teacherPrompts: PromptCard[] = [
   {
     id: "t-worksheet",
     category: "Teacher",
-    number: "01 / 05",
+    number: "01 / 06",
     title: "Make a worksheet",
     description: "A ready worksheet for your class, with space to fill in.",
     body: `Make a worksheet about [TOPIC] for [AGE OR LEVEL]. Mix exercise types and leave space for students to fill in their answers.`,
@@ -270,7 +270,7 @@ const teacherPrompts: PromptCard[] = [
   {
     id: "t-exam",
     category: "Teacher",
-    number: "02 / 05",
+    number: "02 / 06",
     title: "Build an exam",
     description: "An English exam in the school format, ready to use.",
     body: `Build an exam about [TOPIC] for [LEVEL]. Use multiple choice questions, numbered tasks with values, and a reading section.`,
@@ -278,7 +278,7 @@ const teacherPrompts: PromptCard[] = [
   {
     id: "t-discussion",
     category: "Teacher",
-    number: "03 / 05",
+    number: "03 / 06",
     title: "Discussion questions",
     description: "Questions that make the next class actually talk.",
     body: `Based on [MATERIAL], give me questions to discuss in the next class. They should get students talking, not answering yes or no.`,
@@ -286,7 +286,7 @@ const teacherPrompts: PromptCard[] = [
   {
     id: "t-lesson",
     category: "Teacher",
-    number: "04 / 05",
+    number: "04 / 06",
     title: "Plan a lesson",
     description: "A structured lesson, from topic to activity to assessment.",
     body: `Turn [TOPIC] into a lesson plan for [AGE OR LEVEL] with timing, activities and a quick assessment.`,
@@ -294,10 +294,18 @@ const teacherPrompts: PromptCard[] = [
   {
     id: "t-retrieval",
     category: "Teacher",
-    number: "05 / 05",
+    number: "05 / 06",
     title: "Retrieval opener",
     description: "A quick quiz to start the lesson and see what stuck.",
     body: `Make a quick retrieval quiz on [TOPIC] with easy, medium and harder questions to start the lesson.`,
+  },
+  {
+    id: "t-game",
+    category: "Teacher",
+    number: "06 / 06",
+    title: "Build me a game",
+    description: "Make a simple game, for whatever you need it for.",
+    body: `Make a game for me. Keep it simple and fun, and tell me how to open it. I'll tell you what I want it for. When I send you new ideas, add them to the same game instead of starting over.`,
   },
 ];
 
