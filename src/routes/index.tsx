@@ -161,11 +161,39 @@ const skills: SkillCard[] = [
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/notion-beautifier",
   },
   {
-    id: "dictionary",
-    title: "Dictionary",
-    description: "Your own little dictionary during class, in English, French and Italian. No daily limit.",
+    id: "video-editor",
+    title: "Video editor",
+    description: "Edits your videos: removes the filler and silence, adds captions.",
+    tag: "video",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/video-editor",
+  },
+  {
+    id: "exam-builder",
+    title: "Exam builder",
+    description: "Builds English exams in the school format, ready to use.",
+    tag: "tests",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/murilo-prova",
+  },
+  {
+    id: "discussion-questions",
+    title: "Discussion questions",
+    description: "Generates discussion questions for your next class.",
     tag: "class",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/dictionary",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/perguntas-para-aula",
+  },
+  {
+    id: "voice-check",
+    title: "Voice check",
+    description: "Removes the AI tells from your writing so it sounds like you, not a robot.",
+    tag: "voice",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/sem-cara-de-ia",
+  },
+  {
+    id: "find-skills",
+    title: "Find skills",
+    description: "Finds and installs skills for you, so you don't hunt repositories.",
+    tag: "meta",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/find-skills",
   },
 ];
 
