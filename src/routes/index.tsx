@@ -181,6 +181,34 @@ const skills: SkillCard[] = [
     tag: "meta",
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/find-skills",
   },
+  {
+    id: "landing-pages",
+    title: "Landing pages",
+    description: "Builds landing pages that convert: layout, hero section, CTA psychology.",
+    tag: "pages",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/landing-page-design",
+  },
+  {
+    id: "seo-audit",
+    title: "SEO audit",
+    description: "Audits your site and finds out why you're not ranking.",
+    tag: "seo",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/seo-audit",
+  },
+  {
+    id: "copywriting",
+    title: "Copywriting",
+    description: "Writes and rewrites marketing copy that persuades and converts.",
+    tag: "copy",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/copywriting",
+  },
+  {
+    id: "create-your-voice",
+    title: "Create your own voice",
+    description: "Captures your writing voice and turns it into a guide you can reuse.",
+    tag: "voice",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/voice-analysis",
+  },
 ];
 
 function OpenCodeLibraryPage() {
