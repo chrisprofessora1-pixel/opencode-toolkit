@@ -454,7 +454,7 @@ function TabButton({
 function CategoryBlock({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">{label}</h3>
+      <h3 className="text-base font-bold uppercase tracking-[0.12em] text-foreground">{label}</h3>
       <div className="mt-3 flex flex-col gap-6">{children}</div>
     </div>
   );
