@@ -42,24 +42,26 @@ const prompts: PromptCard[] = [
     category: "Setup",
     title: "Build my brain",
     description: "Give OpenCode a folder and a Notion page so your projects, preferences and useful stuff follow you around.",
-    body: `You're going to help me set up what I call my brain. It has two pieces: a folder on my computer and a Notion page. We're doing this one step at a time, and you will not move on to the next step until I tell you we're done.
+    body: `You're going to help me set up what I call my brain. It has two pieces: a folder on my computer and a Notion page. We're doing this one step at a time, and you will not move on until I tell you the current step is done.
 
-Step 1: Create the folder. Ask me where I want it and what I want to call it, then tell me exactly how to create it, or create it for me.
+Step 1: Create the folder. Ask me where I want it and what to call it, then create it for me or tell me exactly how.
 
 Step 2: Notion pages. Give me the structure to build: one main page called My Brain, with subpages called Projects, Skills, Brand and Important Links. Walk me through creating each one.
 
-Step 3: Notion API. Walk me through creating an integration at notion.so/my-integrations, connecting it to the My Brain page, and getting the token. Go slowly, one click at a time, and ask me what I see on my screen before giving me the next instruction.
+Step 3: Notion API. Walk me through creating an integration at notion.so/my-integrations, connecting it to the My Brain page, and getting the token. Go one click at a time, and ask me what I see on my screen before giving me the next instruction.
 
 Step 4: Save the token somewhere secure and tell me where to keep it.
 
-Explain everything like you're talking to a smart friend who just hasn't done this before. No jargon I'd have to google.`,
+Step 5: Write a short file called brain-setup.md in the brain folder with the folder path, the Notion page link and where the token lives. This is your map for every future session, so update it whenever anything changes.
+
+Explain everything like you're talking to a smart friend who just hasn't done this before. No jargon I'd have to google. When we're done, read the setup back to me in plain language so I can confirm it's right.`,
   },
   {
     id: "connect-app",
     category: "Integration",
     title: "Connect me to any app",
     description: "Wire OpenCode into the apps you actually use, one step at a time.",
-    body: `Connect me to [APP NAME]. Walk me through it one step at a time: tell me what to click, where to go and what to paste, and wait for me to tell you what I see before you give me the next step. When it's done, tell me how to test that it's actually connected.
+    body: `Connect me to [APP NAME]. Walk me through it one step at a time: tell me what to click, where to go and what to paste, and wait for me to tell you what I see before you give me the next step. If you're not sure how to set it up, say so and look up the current steps instead of guessing. Never print my full tokens or keys in the chat. When it's connected, test it with a simple request, then tell me how to test it myself later.
 
 Swap [APP NAME] for what you need:
 - "Connect me to Google Calendar."
@@ -73,70 +75,70 @@ Swap [APP NAME] for what you need:
     category: "Integration",
     title: "Bring my Lovable project in",
     description: "Bring a Lovable project into OpenCode through GitHub, step by step.",
-    body: `I have a project in Lovable. Walk me through connecting it to GitHub so I can bring it into OpenCode. Go slowly: tell me exactly what to click in Lovable, where the project link is, and what to do with it in OpenCode. Wait for me at every step.`,
+    body: `I have a project in Lovable. Walk me through connecting it to GitHub so I can bring it into OpenCode. Go slowly: tell me exactly what to click in Lovable, where the project link is, and what to do with it in OpenCode. Wait for me at every step. Once it's connected, open the project and tell me what's inside so we both know it worked, then save the project link and the GitHub repo link in my brain so I can find them later.`,
   },
   {
     id: "github-login",
     category: "Authentication",
     title: "Log me in to GitHub",
     description: "Set up GitHub so you can bring Lovable projects into OpenCode.",
-    body: `Help me set up GitHub. Walk me through creating an account if I don't have one, logging in, and creating a repository. One step at a time, plain language, wait for me at every step.`,
+    body: `Help me set up GitHub. First ask me if I already have an account, and check what's already set up on this computer. Then, depending on what's missing, walk me through creating an account, logging in, and creating a repository. One step at a time, plain language, wait for me at every step. End by pushing one small file to a test repository so we both know it works.`,
   },
   {
     id: "find-skill",
     category: "Discovery",
     title: "Find me a skill",
     description: "Search GitHub for the skill you need without pretending you know what you're looking at.",
-    body: `Find me a GitHub skill for [MAKING INSTAGRAM CAROUSELS / BROWSER CONTROL / STUDENT WORKSHEETS / NOTION PAGES]. Give me the link and tell me what it does in one or two lines, in plain language, before I install anything.`,
+    body: `Find me a GitHub skill for [MAKING INSTAGRAM CAROUSELS / BROWSER CONTROL / STUDENT WORKSHEETS / NOTION PAGES]. Give me the link and tell me in plain language what it does, who maintains it and whether it's up to date. Don't install anything until I say go. Once I approve, install it and confirm it loads in a new chat.`,
   },
   {
     id: "make-skill",
     category: "Discovery",
     title: "Make me a custom skill",
     description: "Turn your own instructions into a skill you can load in any chat.",
-    body: `I want to turn this into a skill: [DESCRIBE YOUR PROCESS, YOUR RULES AND ONE EXAMPLE]. Package it as a skill I can load in any chat, name it something I'll actually remember, and tell me how to use it.`,
+    body: `I want to turn this into a skill: [DESCRIBE YOUR PROCESS, YOUR RULES AND ONE EXAMPLE]. Build it as a proper SKILL.md file with a short name, a clear description of when to use it, and step-by-step instructions, then save it in my skills folder so it loads in any chat. Name it something I'll actually remember. When it's ready, load it and run a quick test with my example so we both know it works, then tell me how to use it.`,
   },
   {
     id: "work-project",
     category: "Execution",
     title: "Let's work on this project",
     description: "Open a project from your brain folder and pick up where you left off.",
-    body: `Open the project [PROJECT NAME] from my brain folder. Read everything in it first, then tell me what the project is and what it currently does. Wait for my instructions before you change anything.`,
+    body: `Open the project [PROJECT NAME] from my brain folder. Read the setup file and everything in the project first. Then tell me in plain language what the project is, what it does right now, and what you'd change first if I asked you to. Don't change anything. Wait for my instructions.`,
   },
   {
     id: "keep-improving",
     category: "Execution",
     title: "Keep improving one project",
     description: "Keep editing the same project instead of rebuilding it every time.",
-    body: `Open my project [PROJECT NAME]. I want to keep working on the same project instead of starting over. Make this change: [DESCRIBE THE CHANGE]. Match the existing style, and tell me what you changed.`,
+    body: `Open my project [PROJECT NAME]. I want to keep working on the same project instead of starting over. Make this change: [DESCRIBE THE CHANGE]. Match the existing style. If the change needs information I haven't given, ask me instead of guessing. After the change, run the build or tests if the project has them, and tell me what you changed.`,
   },
   {
     id: "review-work",
     category: "Execution",
     title: "Review my work",
     description: "Get an honest read on your work before you change anything.",
-    body: `Read [PROJECT OR FILE] carefully. Tell me what's working, what's broken, and the two changes that would improve it the most. Don't change anything yet. Wait for my approval.`,
+    body: `Read [PROJECT OR FILE] carefully. Tell me in plain language what's working, what's broken, and the two changes that would improve it the most, with the reason for each. If anything looks risky or could break the rest, say so clearly. Don't change anything yet. Wait for my approval.`,
   },
   {
     id: "schedule-task",
     category: "Automation",
     title: "Schedule a task",
     description: "Set a task to run later and know where to check on it.",
-    body: `Schedule this task for me: [DESCRIBE THE TASK]. Tell me when it's set for, how to see it, and how to cancel it if I change my mind.`,
+    body: `Schedule this task for me: [DESCRIBE THE TASK]. Ask me when and how often before you set it, then confirm the exact time and time zone in your reply. Show me how to see the task, how to change it, and how to cancel it. When it's set, list it back so I can confirm.`,
   },
   {
     id: "ask-stuck",
     category: "Troubleshooting",
     title: "Ask OpenCode when you're stuck",
     description: "Turn a blocker into a plain-language question and get a useful next move.",
-    body: `I'm stuck on [WHAT YOU'RE TRYING TO DO]. Walk me through this one step at a time: tell me exactly what to click and where, and wait for me to tell you what I see before you give me the next step. Assume I know nothing about this and don't make me feel dumb about it.`,
+    body: `I'm stuck on [WHAT YOU'RE TRYING TO DO]. Walk me through this one step at a time: tell me exactly what to click and where, and wait for me to tell you what I see before you give me the next step. If it involves a file or an error message I can show you, read it or ask me to paste it before you answer. Assume I know nothing about this and don't make me feel dumb about it.`,
   },
   {
     id: "read-screenshot",
     category: "Troubleshooting",
     title: "Read a screenshot",
     description: "Show OpenCode an image that lives on your computer, not in the chat.",
-    body: `Read the image called [FILENAME] in my Downloads folder and tell me what it shows.
+    body: `Read the image called [FILENAME] in my Downloads folder and tell me what it shows. If there's an error or warning on screen, tell me what it means and what to do next. If you can't find the file, list what's actually in the folder so I can give you the right name.
 
 Or, for the Desktop:
 
@@ -249,42 +251,42 @@ const teacherPrompts: PromptCard[] = [
     category: "For teachers",
     title: "Make a worksheet",
     description: "A ready worksheet for your class, with space to fill in.",
-    body: `Make a worksheet about [TOPIC] for [AGE OR LEVEL]. Mix exercise types and leave space for students to fill in their answers.`,
+    body: `Make a worksheet about [TOPIC] for [AGE OR LEVEL]. Mix exercise types, like multiple choice, fill in the blanks, matching and a short writing task, and leave space for students to write their answers. Keep the instructions in English and simple enough for the level. Save it as a printable file, with the answer key at the end so students don't see it.`,
   },
   {
     id: "t-exam",
     category: "For teachers",
     title: "Build an exam",
     description: "An English exam in the school format, ready to use.",
-    body: `Build an exam about [TOPIC] for [LEVEL]. Use multiple choice questions, numbered tasks with values, and a reading section.`,
+    body: `Build an exam about [TOPIC] for [LEVEL]. Use multiple choice questions, numbered tasks with their point values marked, and a reading section with a short text and questions about it. Note the total score at the top. Save it as a printable file, with the answer key at the end, clearly separated so it's not on the student's copy.`,
   },
   {
     id: "t-discussion",
     category: "For teachers",
     title: "Discussion questions",
     description: "Questions that make the next class actually talk.",
-    body: `Based on [MATERIAL], give me questions to discuss in the next class. They should get students talking, not answering yes or no.`,
+    body: `Based on [MATERIAL], give me questions to discuss in the next class. Make them open-ended so students can't answer with just yes or no: a few about understanding the material, a few asking for opinions, and one or two that connect it to their own lives. Give me around ten, grouped by theme, and flag the two that will spark the most debate.`,
   },
   {
     id: "t-lesson",
     category: "For teachers",
     title: "Plan a lesson",
     description: "A structured lesson, from topic to activity to assessment.",
-    body: `Turn [TOPIC] into a lesson plan for [AGE OR LEVEL] with timing, activities and a quick assessment.`,
+    body: `Turn [TOPIC] into a lesson plan for [AGE OR LEVEL]. Start with one clear learning objective. Then give me the plan in time blocks: a short opener, two or three main activities, and a quick wrap-up, with the minutes for each and what I need to prepare. End with a one-line assessment I can use to see if the lesson worked.`,
   },
   {
     id: "t-retrieval",
     category: "For teachers",
     title: "Retrieval opener",
     description: "A quick quiz to start the lesson and see what stuck.",
-    body: `Make a quick retrieval quiz on [TOPIC] with easy, medium and harder questions to start the lesson.`,
+    body: `Make a quick retrieval quiz on [TOPIC] to start the lesson. Five questions, going from easy to harder, mixing types like fill in the blank, multiple choice and one recall question. Keep it under five minutes. Put the answers at the end so I can mark it quickly.`,
   },
   {
     id: "t-game",
     category: "For teachers",
     title: "Build me a game",
     description: "Make a simple game, for whatever you need it for.",
-    body: `Make a game for me. Keep it simple and fun, and tell me how to open it. I'll tell you what I want it for. When I send you new ideas, add them to the same game instead of starting over.`,
+    body: `Make a game for me. Keep it simple and fun, and build it as a single file I can open without installing anything. Tell me how to open it. I'll tell you what I want it for. When I send you new ideas, add them to the same game instead of starting over, and test it after each change so nothing breaks.`,
   },
 ];
 
