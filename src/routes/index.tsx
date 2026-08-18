@@ -249,6 +249,13 @@ const skills: SkillCard[] = [
     tag: "voice",
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/voice-analysis",
   },
+  {
+    id: "design-taste",
+    title: "Design like Claude",
+    description: "Anti-slop frontend design: distinctive interfaces that don't look templated.",
+    tag: "design",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/design-taste-frontend",
+  },
 ];
 
 function OpenCodeLibraryPage() {
