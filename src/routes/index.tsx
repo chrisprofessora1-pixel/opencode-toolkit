@@ -168,20 +168,6 @@ const skills: SkillCard[] = [
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/video-editor",
   },
   {
-    id: "exam-builder",
-    title: "Exam builder",
-    description: "Builds English exams in the school format, ready to use.",
-    tag: "tests",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/murilo-prova",
-  },
-  {
-    id: "discussion-questions",
-    title: "Discussion questions",
-    description: "Generates discussion questions for your next class.",
-    tag: "class",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/perguntas-para-aula",
-  },
-  {
     id: "voice-check",
     title: "Voice check",
     description: "Removes the AI tells from your writing so it sounds like you, not a robot.",
