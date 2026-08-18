@@ -22,7 +22,6 @@ type Tab = "prompts" | "skills";
 type PromptCard = {
   id: string;
   category: string;
-  number: string;
   title: string;
   description: string;
   body: string;
@@ -30,6 +29,7 @@ type PromptCard = {
 
 type SkillCard = {
   id: string;
+  category: string;
   title: string;
   description: string;
   tag: string;
@@ -40,7 +40,6 @@ const prompts: PromptCard[] = [
   {
     id: "build-brain",
     category: "Setup",
-    number: "01 / 13",
     title: "Build my brain",
     description: "Give OpenCode a folder and a Notion page so your projects, preferences and useful stuff follow you around.",
     body: `You're going to help me set up what I call my brain. It has two pieces: a folder on my computer and a Notion page. We're doing this one step at a time, and you will not move on to the next step until I tell you we're done.
@@ -58,7 +57,6 @@ Explain everything like you're talking to a smart friend who just hasn't done th
   {
     id: "connect-app",
     category: "Integration",
-    number: "02 / 13",
     title: "Connect me to any app",
     description: "Wire OpenCode into the apps you actually use, one step at a time.",
     body: `Connect me to [APP NAME]. Walk me through it one step at a time: tell me what to click, where to go and what to paste, and wait for me to tell you what I see before you give me the next step. When it's done, tell me how to test that it's actually connected.
@@ -71,9 +69,22 @@ Swap [APP NAME] for what you need:
 - "Set up browser control for me."`,
   },
   {
+    id: "lovable-handoff",
+    category: "Integration",
+    title: "Bring my Lovable project in",
+    description: "Bring a Lovable project into OpenCode through GitHub, step by step.",
+    body: `I have a project in Lovable. Walk me through connecting it to GitHub so I can bring it into OpenCode. Go slowly: tell me exactly what to click in Lovable, where the project link is, and what to do with it in OpenCode. Wait for me at every step.`,
+  },
+  {
+    id: "github-login",
+    category: "Authentication",
+    title: "Log me in to GitHub",
+    description: "Set up GitHub so you can bring Lovable projects into OpenCode.",
+    body: `Help me set up GitHub. Walk me through creating an account if I don't have one, logging in, and creating a repository. One step at a time, plain language, wait for me at every step.`,
+  },
+  {
     id: "find-skill",
     category: "Discovery",
-    number: "03 / 13",
     title: "Find me a skill",
     description: "Search GitHub for the skill you need without pretending you know what you're looking at.",
     body: `Find me a GitHub skill for [MAKING INSTAGRAM CAROUSELS / BROWSER CONTROL / STUDENT WORKSHEETS / NOTION PAGES]. Give me the link and tell me what it does in one or two lines, in plain language, before I install anything.`,
@@ -81,31 +92,41 @@ Swap [APP NAME] for what you need:
   {
     id: "make-skill",
     category: "Discovery",
-    number: "04 / 13",
     title: "Make me a custom skill",
     description: "Turn your own instructions into a skill you can load in any chat.",
     body: `I want to turn this into a skill: [DESCRIBE YOUR PROCESS, YOUR RULES AND ONE EXAMPLE]. Package it as a skill I can load in any chat, name it something I'll actually remember, and tell me how to use it.`,
   },
   {
-    id: "github-login",
-    category: "Authentication",
-    number: "05 / 13",
-    title: "Log me in to GitHub",
-    description: "Set up GitHub so you can bring Lovable projects into OpenCode.",
-    body: `Help me set up GitHub. Walk me through creating an account if I don't have one, logging in, and creating a repository. One step at a time, plain language, wait for me at every step.`,
-  },
-  {
     id: "work-project",
     category: "Execution",
-    number: "06 / 13",
     title: "Let's work on this project",
     description: "Open a project from your brain folder and pick up where you left off.",
     body: `Open the project [PROJECT NAME] from my brain folder. Read everything in it first, then tell me what the project is and what it currently does. Wait for my instructions before you change anything.`,
   },
   {
+    id: "keep-improving",
+    category: "Execution",
+    title: "Keep improving one project",
+    description: "Keep editing the same project instead of rebuilding it every time.",
+    body: `Open my project [PROJECT NAME]. I want to keep working on the same project instead of starting over. Make this change: [DESCRIBE THE CHANGE]. Match the existing style, and tell me what you changed.`,
+  },
+  {
+    id: "review-work",
+    category: "Execution",
+    title: "Review my work",
+    description: "Get an honest read on your work before you change anything.",
+    body: `Read [PROJECT OR FILE] carefully. Tell me what's working, what's broken, and the two changes that would improve it the most. Don't change anything yet. Wait for my approval.`,
+  },
+  {
+    id: "schedule-task",
+    category: "Automation",
+    title: "Schedule a task",
+    description: "Set a task to run later and know where to check on it.",
+    body: `Schedule this task for me: [DESCRIBE THE TASK]. Tell me when it's set for, how to see it, and how to cancel it if I change my mind.`,
+  },
+  {
     id: "ask-stuck",
     category: "Troubleshooting",
-    number: "07 / 13",
     title: "Ask OpenCode when you're stuck",
     description: "Turn a blocker into a plain-language question and get a useful next move.",
     body: `I'm stuck on [WHAT YOU'RE TRYING TO DO]. Walk me through this one step at a time: tell me exactly what to click and where, and wait for me to tell you what I see before you give me the next step. Assume I know nothing about this and don't make me feel dumb about it.`,
@@ -113,7 +134,6 @@ Swap [APP NAME] for what you need:
   {
     id: "read-screenshot",
     category: "Troubleshooting",
-    number: "08 / 13",
     title: "Read a screenshot",
     description: "Show OpenCode an image that lives on your computer, not in the chat.",
     body: `Read the image called [FILENAME] in my Downloads folder and tell me what it shows.
@@ -122,128 +142,28 @@ Or, for the Desktop:
 
 Look at the screenshot on my Desktop called [FILENAME] and tell me what it shows.`,
   },
-  {
-    id: "lovable-handoff",
-    category: "Integration",
-    number: "09 / 13",
-    title: "Bring my Lovable project in",
-    description: "Bring a Lovable project into OpenCode through GitHub, step by step.",
-    body: `I have a project in Lovable. Walk me through connecting it to GitHub so I can bring it into OpenCode. Go slowly: tell me exactly what to click in Lovable, where the project link is, and what to do with it in OpenCode. Wait for me at every step.`,
-  },
-  {
-    id: "keep-improving",
-    category: "Execution",
-    number: "10 / 13",
-    title: "Keep improving one project",
-    description: "Keep editing the same project instead of rebuilding it every time.",
-    body: `Open my project [PROJECT NAME]. I want to keep working on the same project instead of starting over. Make this change: [DESCRIBE THE CHANGE]. Match the existing style, and tell me what you changed.`,
-  },
-  {
-    id: "review-work",
-    category: "Execution",
-    number: "11 / 13",
-    title: "Review my work",
-    description: "Get an honest read on your work before you change anything.",
-    body: `Read [PROJECT OR FILE] carefully. Tell me what's working, what's broken, and the two changes that would improve it the most. Don't change anything yet. Wait for my approval.`,
-  },
-  {
-    id: "schedule-task",
-    category: "Automation",
-    number: "12 / 13",
-    title: "Schedule a task",
-    description: "Set a task to run later and know where to check on it.",
-    body: `Schedule this task for me: [DESCRIBE THE TASK]. Tell me when it's set for, how to see it, and how to cancel it if I change my mind.`,
-  },
-  {
-    id: "build-game",
-    category: "Creation",
-    number: "13 / 13",
-    title: "Build me a game",
-    description: "Make a simple game, for whatever you need it for.",
-    body: `Make a game for me. Keep it simple and fun, and tell me how to open it. I'll tell you what I want it for. When I send you new ideas, add them to the same game instead of starting over.`,
-  },
 ];
 
 const skills: SkillCard[] = [
   {
     id: "brand-kit",
+    category: "Brand",
     title: "Brand kit",
     description: "My colors, fonts and voice, so everything you make looks like me.",
     tag: "brand",
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/brand-kit",
   },
   {
-    id: "browser-control",
-    title: "Browser control",
-    description: "Controls the browser and does things on the web for you.",
-    tag: "browser",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/browser-control",
-  },
-  {
-    id: "carousels",
-    title: "Instagram carousels",
-    description: "Builds your carousels in your style, slide by slide.",
-    tag: "carousels",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/squad-carrossel-fera",
-  },
-  {
-    id: "worksheets",
-    title: "Worksheets",
-    description: "Student worksheets and vocabulary homework, ready to fill in.",
-    tag: "worksheets",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/licao-de-casa",
-  },
-  {
-    id: "notion-pages",
-    title: "Notion pages",
-    description: "Builds properly designed Notion pages, not a wall of text.",
-    tag: "notion",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/notion-beautifier",
-  },
-  {
-    id: "video-editor",
-    title: "Video editor",
-    description: "Edits your videos: removes the filler and silence, adds captions.",
-    tag: "video",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/video-editor",
-  },
-  {
     id: "voice-check",
+    category: "Brand",
     title: "Voice check",
     description: "Removes the AI tells from your writing so it sounds like you, not a robot.",
     tag: "voice",
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/sem-cara-de-ia",
   },
   {
-    id: "find-skills",
-    title: "Find skills",
-    description: "Finds and installs skills for you, so you don't hunt repositories.",
-    tag: "meta",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/find-skills",
-  },
-  {
-    id: "landing-pages",
-    title: "Landing pages",
-    description: "Builds landing pages that convert: layout, hero section, CTA psychology.",
-    tag: "pages",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/landing-page-design",
-  },
-  {
-    id: "seo-audit",
-    title: "SEO audit",
-    description: "Audits your site and finds out why you're not ranking.",
-    tag: "seo",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/seo-audit",
-  },
-  {
-    id: "copywriting",
-    title: "Copywriting",
-    description: "Writes and rewrites marketing copy that persuades and converts.",
-    tag: "copy",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/copywriting",
-  },
-  {
     id: "create-your-voice",
+    category: "Brand",
     title: "Create your own voice",
     description: "Captures your writing voice and turns it into a guide you can reuse.",
     tag: "voice",
@@ -251,58 +171,117 @@ const skills: SkillCard[] = [
   },
   {
     id: "design-taste",
+    category: "Design",
     title: "Design like Claude",
     description: "Anti-slop frontend design: distinctive interfaces that don't look templated.",
     tag: "design",
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/design-taste-frontend",
+  },
+  {
+    id: "landing-pages",
+    category: "Design",
+    title: "Landing pages",
+    description: "Builds landing pages that convert: layout, hero section, CTA psychology.",
+    tag: "pages",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/landing-page-design",
+  },
+  {
+    id: "carousels",
+    category: "Content",
+    title: "Instagram carousels",
+    description: "Builds your carousels in your style, slide by slide.",
+    tag: "carousels",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/squad-carrossel-fera",
+  },
+  {
+    id: "video-editor",
+    category: "Content",
+    title: "Video editor",
+    description: "Edits your videos: removes the filler and silence, adds captions.",
+    tag: "video",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/video-editor",
+  },
+  {
+    id: "copywriting",
+    category: "Marketing",
+    title: "Copywriting",
+    description: "Writes and rewrites marketing copy that persuades and converts.",
+    tag: "copy",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/copywriting",
+  },
+  {
+    id: "seo-audit",
+    category: "Marketing",
+    title: "SEO audit",
+    description: "Audits your site and finds out why you're not ranking.",
+    tag: "seo",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/seo-audit",
+  },
+  {
+    id: "browser-control",
+    category: "Tools",
+    title: "Browser control",
+    description: "Controls the browser and does things on the web for you.",
+    tag: "browser",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/browser-control",
+  },
+  {
+    id: "notion-pages",
+    category: "Tools",
+    title: "Notion pages",
+    description: "Builds properly designed Notion pages, not a wall of text.",
+    tag: "notion",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/notion-beautifier",
+  },
+  {
+    id: "find-skills",
+    category: "Tools",
+    title: "Find skills",
+    description: "Finds and installs skills for you, so you don't hunt repositories.",
+    tag: "meta",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/find-skills",
   },
 ];
 
 const teacherPrompts: PromptCard[] = [
   {
     id: "t-worksheet",
-    category: "Teacher",
-    number: "01 / 06",
+    category: "For teachers",
     title: "Make a worksheet",
     description: "A ready worksheet for your class, with space to fill in.",
     body: `Make a worksheet about [TOPIC] for [AGE OR LEVEL]. Mix exercise types and leave space for students to fill in their answers.`,
   },
   {
     id: "t-exam",
-    category: "Teacher",
-    number: "02 / 06",
+    category: "For teachers",
     title: "Build an exam",
     description: "An English exam in the school format, ready to use.",
     body: `Build an exam about [TOPIC] for [LEVEL]. Use multiple choice questions, numbered tasks with values, and a reading section.`,
   },
   {
     id: "t-discussion",
-    category: "Teacher",
-    number: "03 / 06",
+    category: "For teachers",
     title: "Discussion questions",
     description: "Questions that make the next class actually talk.",
     body: `Based on [MATERIAL], give me questions to discuss in the next class. They should get students talking, not answering yes or no.`,
   },
   {
     id: "t-lesson",
-    category: "Teacher",
-    number: "04 / 06",
+    category: "For teachers",
     title: "Plan a lesson",
     description: "A structured lesson, from topic to activity to assessment.",
     body: `Turn [TOPIC] into a lesson plan for [AGE OR LEVEL] with timing, activities and a quick assessment.`,
   },
   {
     id: "t-retrieval",
-    category: "Teacher",
-    number: "05 / 06",
+    category: "For teachers",
     title: "Retrieval opener",
     description: "A quick quiz to start the lesson and see what stuck.",
     body: `Make a quick retrieval quiz on [TOPIC] with easy, medium and harder questions to start the lesson.`,
   },
   {
     id: "t-game",
-    category: "Teacher",
-    number: "06 / 06",
+    category: "For teachers",
     title: "Build me a game",
     description: "Make a simple game, for whatever you need it for.",
     body: `Make a game for me. Keep it simple and fun, and tell me how to open it. I'll tell you what I want it for. When I send you new ideas, add them to the same game instead of starting over.`,
@@ -312,6 +291,7 @@ const teacherPrompts: PromptCard[] = [
 const teacherSkills: SkillCard[] = [
   {
     id: "t-exam-skill",
+    category: "For teachers",
     title: "Exam builder",
     description: "Builds English exams in the school format, ready to use.",
     tag: "tests",
@@ -319,6 +299,7 @@ const teacherSkills: SkillCard[] = [
   },
   {
     id: "t-discussion-skill",
+    category: "For teachers",
     title: "Discussion questions",
     description: "Generates discussion questions for your next class.",
     tag: "class",
@@ -326,6 +307,7 @@ const teacherSkills: SkillCard[] = [
   },
   {
     id: "t-lesson-skill",
+    category: "For teachers",
     title: "Lesson plans",
     description: "Turns a topic into a structured lesson plan with timing and activities.",
     tag: "lessons",
@@ -333,6 +315,7 @@ const teacherSkills: SkillCard[] = [
   },
   {
     id: "t-retrieval-skill",
+    category: "For teachers",
     title: "Retrieval practice",
     description: "Quick revision quizzes at different difficulties.",
     tag: "revision",
@@ -340,41 +323,78 @@ const teacherSkills: SkillCard[] = [
   },
   {
     id: "t-vocab-skill",
+    category: "For teachers",
     title: "Vocabulary tiers",
     description: "Sorts the words in a text into everyday, academic and technical, so you know what to teach first.",
     tag: "vocabulary",
     githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/vocabulary-tiering-tool",
   },
+  {
+    id: "t-worksheet-skill",
+    category: "For teachers",
+    title: "Worksheets",
+    description: "Student worksheets and vocabulary homework, ready to fill in.",
+    tag: "worksheets",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/licao-de-casa",
+  },
 ];
+
+const PROMPT_GROUP_ORDER = [
+  "Setup",
+  "Integration",
+  "Authentication",
+  "Discovery",
+  "Execution",
+  "Automation",
+  "Troubleshooting",
+  "For teachers",
+];
+
+const SKILL_GROUP_ORDER = ["Brand", "Design", "Content", "Marketing", "Tools", "For teachers"];
+
+function groupByCategory<T extends { category: string }>(items: T[], order: string[]) {
+  return order
+    .map((category) => ({ category, items: items.filter((item) => item.category === category) }))
+    .filter((group) => group.items.length > 0);
+}
 
 function OpenCodeLibraryPage() {
   const [activeTab, setActiveTab] = useState<Tab>("prompts");
+
+  const promptGroups = groupByCategory(prompts, PROMPT_GROUP_ORDER);
+  const skillGroups = groupByCategory(skills, SKILL_GROUP_ORDER);
 
   return (
     <div className="min-h-screen bg-background pb-24">
       <TopBar activeTab={activeTab} onTabChange={setActiveTab} />
 
       <main className="mx-auto max-w-[900px] px-4 pt-6 md:pt-10">
-        <HeroCard promptCount={prompts.length} skillCount={skills.length} />
+        <HeroCard />
         <HowToUseCard />
 
         <section aria-label={activeTab === "prompts" ? "Prompts" : "Skills"} className="mt-8">
           {activeTab === "prompts" ? (
-            <div className="flex flex-col gap-6">
-              {prompts.map((prompt) => (
-                <PromptCard key={prompt.id} prompt={prompt} />
+            <div className="flex flex-col gap-8">
+              {promptGroups.map((group) => (
+                <CategoryBlock key={group.category} label={group.category}>
+                  {group.items.map((prompt) => (
+                    <PromptCard key={prompt.id} prompt={prompt} />
+                  ))}
+                </CategoryBlock>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col gap-6">
-              {skills.map((skill) => (
-                <SkillCardComponent key={skill.id} skill={skill} />
+            <div className="flex flex-col gap-8">
+              {skillGroups.map((group) => (
+                <CategoryBlock key={group.category} label={group.category}>
+                  {group.items.map((skill) => (
+                    <SkillCardComponent key={skill.id} skill={skill} />
+                  ))}
+                </CategoryBlock>
               ))}
             </div>
           )}
         </section>
-
-        <TeacherSection />
 
         <FinalCTA />
       </main>
@@ -431,7 +451,16 @@ function TabButton({
   );
 }
 
-function HeroCard({ promptCount, skillCount }: { promptCount: number; skillCount: number }) {
+function CategoryBlock({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">{label}</h3>
+      <div className="mt-3 flex flex-col gap-6">{children}</div>
+    </div>
+  );
+}
+
+function HeroCard() {
   return (
     <article className="rounded-[24px] border border-border bg-card p-6 shadow-sm md:p-10">
       <span className="text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
@@ -446,20 +475,7 @@ function HeroCard({ promptCount, skillCount }: { promptCount: number; skillCount
         This is where paid subscribers grab the exact prompts and skill links I use with OpenCode.
         No fluff. Just open the right tab, copy what you need, and paste it in.
       </p>
-
-      <div className="mt-6 flex flex-wrap gap-3">
-        <StatPill label={`${promptCount} prompts`} />
-        <StatPill label={`${skillCount} skills`} />
-      </div>
     </article>
-  );
-}
-
-function StatPill({ label }: { label: string }) {
-  return (
-    <span className="inline-flex items-center rounded-full border border-border bg-cream px-4 py-2 text-sm font-semibold text-foreground">
-      {label}
-    </span>
   );
 }
 
@@ -497,14 +513,7 @@ function PromptCard({ prompt }: { prompt: PromptCard }) {
 
   return (
     <article className="rounded-[24px] border border-border bg-card p-6 shadow-sm md:p-8">
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
-          {prompt.category}
-        </span>
-        <span className="text-xs font-semibold text-muted-foreground">{prompt.number}</span>
-      </div>
-
-      <h3 className="mt-3 font-display text-[28px] font-bold text-foreground">{prompt.title}</h3>
+      <h3 className="font-display text-[28px] font-bold text-foreground">{prompt.title}</h3>
       <p className="mt-1 text-[17px] text-muted-foreground">{prompt.description}</p>
 
       <div className="relative mt-5 rounded-[20px] bg-ink p-5 md:p-6">
@@ -616,41 +625,5 @@ function FinalCTA() {
         <p className="text-sm font-semibold text-warm-beige/90">Chris Castelli · @profchriscastelli</p>
       </div>
     </article>
-  );
-}
-
-function TeacherSection() {
-  return (
-    <section aria-label="For teachers" className="mt-10">
-      <article className="rounded-[24px] bg-cream p-6 md:p-8">
-        <span className="text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
-          For teachers
-        </span>
-        <h2 className="mt-3 font-display text-[28px] font-bold leading-[1.1] text-foreground md:text-[32px]">
-          The teacher shelf
-        </h2>
-        <p className="mt-2 max-w-[620px] text-[17px] leading-relaxed text-muted-foreground">
-          I teach languages for a living. If you do too, these are the cards I reach for.
-        </p>
-      </article>
-
-      <h3 className="mt-8 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
-        Prompts
-      </h3>
-      <div className="mt-3 flex flex-col gap-6">
-        {teacherPrompts.map((prompt) => (
-          <PromptCard key={prompt.id} prompt={prompt} />
-        ))}
-      </div>
-
-      <h3 className="mt-10 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
-        Skills
-      </h3>
-      <div className="mt-3 flex flex-col gap-6">
-        {teacherSkills.map((skill) => (
-          <SkillCardComponent key={skill.id} skill={skill} />
-        ))}
-      </div>
-    </section>
   );
 }
