@@ -159,8 +159,8 @@ Look at the screenshot on my Desktop called [FILENAME] and tell me what it shows
     category: "Creation",
     number: "13 / 13",
     title: "Build me a game",
-    description: "Make a little game for a student and keep the same one growing.",
-    body: `Make a vocabulary game using these words: [WORD LIST]. Keep it simple and fun, and tell me how to open it.`,
+    description: "Make a simple game, for whatever you need it for.",
+    body: `Make a game for me. Keep it simple and fun, and tell me how to open it. I'll tell you what I want it for. When I send you new ideas, add them to the same game instead of starting over.`,
   },
 ];
 
@@ -258,6 +258,87 @@ const skills: SkillCard[] = [
   },
 ];
 
+const teacherPrompts: PromptCard[] = [
+  {
+    id: "t-worksheet",
+    category: "Teacher",
+    number: "01 / 05",
+    title: "Make a worksheet",
+    description: "A ready worksheet for your class, with space to fill in.",
+    body: `Make a worksheet about [TOPIC] for [AGE OR LEVEL]. Mix exercise types and leave space for students to fill in their answers.`,
+  },
+  {
+    id: "t-exam",
+    category: "Teacher",
+    number: "02 / 05",
+    title: "Build an exam",
+    description: "An English exam in the school format, ready to use.",
+    body: `Build an exam about [TOPIC] for [LEVEL]. Use multiple choice questions, numbered tasks with values, and a reading section.`,
+  },
+  {
+    id: "t-discussion",
+    category: "Teacher",
+    number: "03 / 05",
+    title: "Discussion questions",
+    description: "Questions that make the next class actually talk.",
+    body: `Based on [MATERIAL], give me questions to discuss in the next class. They should get students talking, not answering yes or no.`,
+  },
+  {
+    id: "t-lesson",
+    category: "Teacher",
+    number: "04 / 05",
+    title: "Plan a lesson",
+    description: "A structured lesson, from topic to activity to assessment.",
+    body: `Turn [TOPIC] into a lesson plan for [AGE OR LEVEL] with timing, activities and a quick assessment.`,
+  },
+  {
+    id: "t-retrieval",
+    category: "Teacher",
+    number: "05 / 05",
+    title: "Retrieval opener",
+    description: "A quick quiz to start the lesson and see what stuck.",
+    body: `Make a quick retrieval quiz on [TOPIC] with easy, medium and harder questions to start the lesson.`,
+  },
+];
+
+const teacherSkills: SkillCard[] = [
+  {
+    id: "t-exam-skill",
+    title: "Exam builder",
+    description: "Builds English exams in the school format, ready to use.",
+    tag: "tests",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/murilo-prova",
+  },
+  {
+    id: "t-discussion-skill",
+    title: "Discussion questions",
+    description: "Generates discussion questions for your next class.",
+    tag: "class",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/perguntas-para-aula",
+  },
+  {
+    id: "t-lesson-skill",
+    title: "Lesson plans",
+    description: "Turns a topic into a structured lesson plan with timing and activities.",
+    tag: "lessons",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/teaching-lesson-plan",
+  },
+  {
+    id: "t-retrieval-skill",
+    title: "Retrieval practice",
+    description: "Quick revision quizzes at different difficulties.",
+    tag: "revision",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/retrieval-practice-generator",
+  },
+  {
+    id: "t-vocab-skill",
+    title: "Vocabulary tiers",
+    description: "Sorts the words in a text into everyday, academic and technical, so you know what to teach first.",
+    tag: "vocabulary",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/vocabulary-tiering-tool",
+  },
+];
+
 function OpenCodeLibraryPage() {
   const [activeTab, setActiveTab] = useState<Tab>("prompts");
 
@@ -284,6 +365,8 @@ function OpenCodeLibraryPage() {
             </div>
           )}
         </section>
+
+        <TeacherSection />
 
         <FinalCTA />
       </main>
@@ -525,5 +608,41 @@ function FinalCTA() {
         <p className="text-sm font-semibold text-warm-beige/90">Chris Castelli · @profchriscastelli</p>
       </div>
     </article>
+  );
+}
+
+function TeacherSection() {
+  return (
+    <section aria-label="For teachers" className="mt-10">
+      <article className="rounded-[24px] bg-cream p-6 md:p-8">
+        <span className="text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
+          For teachers
+        </span>
+        <h2 className="mt-3 font-display text-[28px] font-bold leading-[1.1] text-foreground md:text-[32px]">
+          The teacher shelf
+        </h2>
+        <p className="mt-2 max-w-[620px] text-[17px] leading-relaxed text-muted-foreground">
+          I teach languages for a living. If you do too, these are the cards I reach for.
+        </p>
+      </article>
+
+      <h3 className="mt-8 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
+        Prompts
+      </h3>
+      <div className="mt-3 flex flex-col gap-6">
+        {teacherPrompts.map((prompt) => (
+          <PromptCard key={prompt.id} prompt={prompt} />
+        ))}
+      </div>
+
+      <h3 className="mt-10 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
+        Skills
+      </h3>
+      <div className="mt-3 flex flex-col gap-6">
+        {teacherSkills.map((skill) => (
+          <SkillCardComponent key={skill.id} skill={skill} />
+        ))}
+      </div>
+    </section>
   );
 }
