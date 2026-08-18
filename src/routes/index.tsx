@@ -160,7 +160,7 @@ Look at the screenshot on my Desktop called [FILENAME] and tell me what it shows
     number: "13 / 13",
     title: "Build me a game",
     description: "Make a little game for a student and keep the same one growing.",
-    body: `Make a vocabulary game for [STUDENT NAME] using these words: [WORD LIST]. Keep it simple and fun, and tell me how to open it.`,
+    body: `Make a vocabulary game using these words: [WORD LIST]. Keep it simple and fun, and tell me how to open it.`,
   },
 ];
 
