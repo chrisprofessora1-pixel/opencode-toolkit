@@ -40,81 +40,132 @@ const prompts: PromptCard[] = [
   {
     id: "build-brain",
     category: "Setup",
-    number: "01 / 06",
+    number: "01 / 08",
     title: "Build my brain",
-    description: "Give OpenCode a structured memory of your stack, style, and preferences.",
-    body: "[PASTE PROMPT HERE]",
+    description: "Give OpenCode a folder and a Notion page so your projects, preferences and useful stuff follow you around.",
+    body: `You're going to help me set up what I call my brain. It has two pieces: a folder on my computer and a Notion page. We're doing this one step at a time, and you will not move on to the next step until I tell you we're done.
+
+Step 1: Create the folder. Ask me where I want it and what I want to call it, then tell me exactly how to create it, or create it for me.
+
+Step 2: Notion pages. Give me the structure to build: one main page called My Brain, with subpages called Projects, Skills, Brand and Important Links. Walk me through creating each one.
+
+Step 3: Notion API. Walk me through creating an integration at notion.so/my-integrations, connecting it to the My Brain page, and getting the token. Go slowly, one click at a time, and ask me what I see on my screen before giving me the next instruction.
+
+Step 4: Save the token somewhere secure and tell me where to keep it.
+
+Explain everything like you're talking to a smart friend who just hasn't done this before. No jargon I'd have to google.`,
   },
   {
     id: "connect-app",
     category: "Integration",
-    number: "02 / 06",
+    number: "02 / 08",
     title: "Connect me to any app",
-    description: "Wire OpenCode into an external API or service using the details you provide.",
-    body: "[PASTE PROMPT HERE]",
+    description: "Wire OpenCode into the apps you actually use, one step at a time.",
+    body: `Connect me to [APP NAME]. Walk me through it one step at a time: tell me what to click, where to go and what to paste, and wait for me to tell you what I see before you give me the next step. When it's done, tell me how to test that it's actually connected.
+
+Swap [APP NAME] for what you need:
+- "Connect me to Google Calendar."
+- "Connect me to Gmail."
+- "Connect me to Notion."
+- "Connect me to my Google Drive."
+- "Set up browser control for me."`,
   },
   {
     id: "find-skill",
     category: "Discovery",
-    number: "03 / 06",
+    number: "03 / 08",
     title: "Find me a skill",
-    description: "Search the skill registry for the right tool to solve your current task.",
-    body: "[PASTE PROMPT HERE]",
+    description: "Search GitHub for the skill you need without pretending you know what you're looking at.",
+    body: `Find me a GitHub skill for [MAKING INSTAGRAM CAROUSELS / BROWSER CONTROL / STUDENT WORKSHEETS / NOTION PAGES]. Give me the link and tell me what it does in one or two lines, in plain language, before I install anything.`,
+  },
+  {
+    id: "make-skill",
+    category: "Discovery",
+    number: "04 / 08",
+    title: "Make me a custom skill",
+    description: "Turn your own instructions into a skill you can load in any chat.",
+    body: `I want to turn this into a skill: [DESCRIBE YOUR PROCESS, YOUR RULES AND ONE EXAMPLE]. Package it as a skill I can load in any chat, name it something I'll actually remember, and tell me how to use it.`,
   },
   {
     id: "github-login",
     category: "Authentication",
-    number: "04 / 06",
+    number: "05 / 08",
     title: "Log me in to GitHub",
-    description: "Set up a secure GitHub connection so OpenCode can push and pull for you.",
-    body: "[PASTE PROMPT HERE]",
+    description: "Set up GitHub so you can bring Lovable projects into OpenCode.",
+    body: `Help me set up GitHub. Walk me through creating an account if I don't have one, logging in, and creating a repository. One step at a time, plain language, wait for me at every step.`,
   },
   {
     id: "work-project",
     category: "Execution",
-    number: "05 / 06",
+    number: "06 / 08",
     title: "Let's work on this project",
-    description: "Hand OpenCode a project brief and let it plan the first steps.",
-    body: "[PASTE PROMPT HERE]",
+    description: "Open a project from your brain folder and pick up where you left off.",
+    body: `Open the project [PROJECT NAME] from my brain folder. Read everything in it first, then tell me what the project is and what it currently does. Wait for my instructions before you change anything.`,
   },
   {
     id: "ask-stuck",
     category: "Troubleshooting",
-    number: "06 / 06",
+    number: "07 / 08",
     title: "Ask OpenCode when you're stuck",
-    description: "Turn a blocker into a clear question and get a useful next move.",
-    body: "[PASTE PROMPT HERE]",
+    description: "Turn a blocker into a plain-language question and get a useful next move.",
+    body: `I'm stuck on [WHAT YOU'RE TRYING TO DO]. Walk me through this one step at a time: tell me exactly what to click and where, and wait for me to tell you what I see before you give me the next step. Assume I know nothing about this and don't make me feel dumb about it.`,
+  },
+  {
+    id: "read-screenshot",
+    category: "Troubleshooting",
+    number: "08 / 08",
+    title: "Read a screenshot",
+    description: "Show OpenCode an image that lives on your computer, not in the chat.",
+    body: `Read the image called [FILENAME] in my Downloads folder and tell me what it shows.
+
+Or, for the Desktop:
+
+Look at the screenshot on my Desktop called [FILENAME] and tell me what it shows.`,
   },
 ];
 
 const skills: SkillCard[] = [
   {
-    id: "skill-1",
-    title: "Skill title one",
-    description: "A one-line description of what this skill does for the reader.",
-    tag: "Does something useful",
-    githubUrl: "https://github.com/example/repo-one",
+    id: "brand-kit",
+    title: "Brand kit",
+    description: "My colors, fonts and voice, so everything you make looks like me.",
+    tag: "brand",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/brand-kit",
   },
   {
-    id: "skill-2",
-    title: "Skill title two",
-    description: "A one-line description of what this skill does for the reader.",
-    tag: "Does something useful",
-    githubUrl: "https://github.com/example/repo-two",
+    id: "browser-control",
+    title: "Browser control",
+    description: "Controls the browser and does things on the web for you.",
+    tag: "browser",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/browser-control",
   },
   {
-    id: "skill-3",
-    title: "Skill title three",
-    description: "A one-line description of what this skill does for the reader.",
-    tag: "Does something useful",
-    githubUrl: "https://github.com/example/repo-three",
+    id: "carousels",
+    title: "Instagram carousels",
+    description: "Builds your carousels in your style, slide by slide.",
+    tag: "carousels",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/squad-carrossel-fera",
   },
   {
-    id: "skill-4",
-    title: "Skill title four",
-    description: "A one-line description of what this skill does for the reader.",
-    tag: "Does something useful",
-    githubUrl: "https://github.com/example/repo-four",
+    id: "worksheets",
+    title: "Worksheets",
+    description: "Student worksheets and vocabulary homework, ready to fill in.",
+    tag: "worksheets",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/licao-de-casa",
+  },
+  {
+    id: "notion-pages",
+    title: "Notion pages",
+    description: "Builds properly designed Notion pages, not a wall of text.",
+    tag: "notion",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/notion-beautifier",
+  },
+  {
+    id: "dictionary",
+    title: "Dictionary",
+    description: "Your own little dictionary during class, in English, French and Italian. No daily limit.",
+    tag: "class",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/dictionary",
   },
 ];
 
