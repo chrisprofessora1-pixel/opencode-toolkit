@@ -231,9 +231,9 @@ const skills: SkillCard[] = [
     id: "notion-pages",
     category: "Tools",
     title: "Notion pages",
-    description: "Builds properly designed Notion pages, not a wall of text.",
+    description: "Builds properly designed Notion pages, not a wall of text. Includes the verified homework page format for language teachers.",
     tag: "notion",
-    githubUrl: "https://github.com/chrisprofessora1-pixel/opencode-toolkit/tree/main/skills/notion-beautifier",
+    githubUrl: "https://github.com/chrisprofessora1-pixel/notion-pages-skill",
   },
   {
     id: "find-skills",
